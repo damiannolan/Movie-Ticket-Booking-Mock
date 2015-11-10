@@ -79,27 +79,35 @@ public class CinemaSystem
 				
 				int i = -1;
 				
-				while(found == false && i < count)
+				while(found == false && i < (count -1))
 				{
 					i++;
 					found = c[i].login(username, pass);
-					System.out.println(found);
-								
+					//System.out.println(found);
+												
 				} //end while
 				
 				if(found)
 				{
 					System.out.println("Login Successful!");
 					currentUser = i;
+					
+					System.out.println("\n" + c[currentUser].greeting());
+					System.out.println(c[currentUser].toString());
+					
+					/*
+					 * 
+					 * 
+					 * Code goes here
+					 * Add Logout method
+					 * 
+					 * 
+					 */
 				}
 				else
 				{
 					System.out.println("Login failed! Please try again.");
-				} //end if/else
-				
-				System.out.println("\n" + c[currentUser].greeting());
-				System.out.println(c[currentUser].toString());
-				
+				} //end if/else	
 				break;
 			case 3:
 				break;
