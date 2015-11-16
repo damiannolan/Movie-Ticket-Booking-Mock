@@ -6,6 +6,7 @@ import java.util.*;
 public class CinemaSystem 
 {
 	static final int MAX_USERS = 10;
+	static final int MAX_MOVIES = 10;
 
 	public static void main(String[] args) throws FileNotFoundException, IOException 
 	{
@@ -16,13 +17,15 @@ public class CinemaSystem
 	
 
 		// Variables
-		int option;
+		int option, choice;
 		int count = 0;
 		String username, pass;
 		boolean found = false;
 		int currentUser = 0;
+		int movieCount = 0;
 		
 		Customer [] c = new Customer[MAX_USERS];
+		Movie [] movies = new Movie [MAX_MOVIES];
 
 		// Header
 		System.out.println("******************Welcome******************");
@@ -59,17 +62,17 @@ public class CinemaSystem
 				
 				//Populate Customer Array with user file contents
 				//============================================================
-				//MAYBE MOVE THIS CODE TO BEGINNING AND USE EXCEPTION HANDLING
+				//MAYBE MOVE THIS CODE
 				count = 0;
 				while (usersFileIn.hasNext()) 
 				{
-					c[count] = new Customer(usersFileIn.next(), usersFileIn.next(), usersFileIn.next(), usersFileIn.next(), usersFileIn.nextInt(), usersFileIn.nextInt(), usersFileIn.nextLine());
+					c[count] = new Customer(usersFileIn.next(), usersFileIn.next(), usersFileIn.next(), usersFileIn.next(), usersFileIn.nextInt(), usersFileIn.nextLine());
 					
 					count++;
 				} //end while
 				System.out.println("Number of accounts: " + count);
 				usersFileIn.close();
-				//MAYBE MOVE THIS CODE TO BEGINNING AND USE EXCEPTION HANDLING
+				//MAYBE MOVE THIS CODE
 				//============================================================
 				
 				System.out.print("Enter username: ");
@@ -92,14 +95,55 @@ public class CinemaSystem
 					System.out.println("Login Successful!");
 					currentUser = i;
 					
-					System.out.println("\n" + c[currentUser].greeting());
-					System.out.println(c[currentUser].toString());
+					System.out.println("\n" + c[i].greeting());
 					
+					System.out.println("\nShow Customer Details (1), Display Movies (2), Order Ticket (3), Logout (-1)");
+					System.out.print("Please choose an option: ");
+					choice = console.nextInt();
+					
+					while(choice != -1)
+					{
+						switch(choice)
+						{
+							case 1:
+								System.out.println(c[currentUser].toString());
+								break;
+							case 2:
+								Scanner movieFile = new Scanner(new FileReader("movies.txt"));
+								
+								movieCount = 0;
+								while(movieFile.hasNext())
+								{
+									movies[movieCount] = new Movie(movieFile.next(), movieFile.nextInt(), movieFile.nextLine());
+									
+									movieCount++;
+								}
+								
+								for(i = 0; i < movieCount; i++)
+								{
+									movies[i].display();
+									System.out.println(movies[i].getClass());
+								}
+								break;
+							case 3:
+								break;
+							default:
+						}
+						
+						System.out.println("\nShow Customer Details (1), Display Movies (2), Order Ticket (3), Logout (-1)");
+						System.out.print("Please choose an option: ");
+						choice = console.nextInt();
+					} //end choice while
+					
+					found = c[currentUser].logout();
+					System.out.println("User has been logged out. Goodbye!");
 					/*
 					 * 
 					 * 
 					 * Code goes here
 					 * Add Logout method
+					 * Maybe change some member vars.
+					 * Get rid of address and contact number. Add email?
 					 * 
 					 * 
 					 */

@@ -5,17 +5,17 @@ public class Customer extends Account
 	String firstName;
 	String lastName;
 	int age;
-	int contactNumber;
-	String address;
+	String email;
+	double balance;
 	
 	public Customer()
 	{
 		super();
-		getFirstName();
-		getLastName();
-		getAge();
-		getContactNo();
-		getAddress();
+		setFirstName();
+		setLastName();
+		setAge();
+		setEmail();
+		
 	}
 
 	public Customer(String username, String password) 
@@ -23,18 +23,17 @@ public class Customer extends Account
 		super(username, password);
 	}
 	
-	public Customer(String username, String password, String firstName, String lastName, int age, int contactNumber, String address)
+	public Customer(String username, String password, String firstName, String lastName, int age, String email)
 	{
 		//Calling constructor using this()
 		this(username, password);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.age = age;
-		this.contactNumber = contactNumber;
-		this.address = address;
+		this.email = email;
 	}
 	
-	public String getFirstName()
+	public String setFirstName()
 	{
 		System.out.print("Enter first name: ");
 		firstName = console.next();
@@ -42,7 +41,7 @@ public class Customer extends Account
 		return firstName;
 	}
 	
-	public String getLastName()
+	public String setLastName()
 	{
 		System.out.print("Enter last name: ");
 		lastName = console.next();
@@ -50,7 +49,7 @@ public class Customer extends Account
 		return lastName;
 	}
 	
-	public int getAge()
+	public int setAge()
 	{
 		System.out.print("Enter Age: ");
 		age = console.nextInt();
@@ -58,26 +57,12 @@ public class Customer extends Account
 		return age;
 	}
 	
-	public int getContactNo()
+	public String setEmail()
 	{
-		System.out.print("Enter Contact Number: ");
-		contactNumber = console.nextInt();
+		System.out.print("Enter Email: ");
+		email = console.next();
 		
-		return contactNumber;
-	}
-	
-	public String getAddress()
-	{
-		console.nextLine();
-		System.out.print("Enter Address: ");
-		address = console.nextLine();
-		
-		return address;
-	}
-	
-	public void setUsername(String username)
-	{
-		this.username = username;
+		return email;
 	}
 	
 	public String greeting()
@@ -95,8 +80,7 @@ public class Customer extends Account
 		"\nUsername: " + username +
 		"\nFullname: " + firstName + " " + lastName +
 		"\nAge: " + age + 
-		"\nContact Number: (+353)" + contactNumber +
-		"\nAddress: " + address;
+		"\nEmail: " + email;
 		
 		return str;
 	}
@@ -106,7 +90,7 @@ public class Customer extends Account
 	{
 		String str;
 		
-		str = username + "\t" + password + "\t" +  firstName + "\t" + lastName + "\t" +  age + "\t" + contactNumber +  "\t" + address + "\t";
+		str = username + "\t" + password + "\t" +  firstName + "\t" + lastName + "\t" +  age + "\t" + email + "\t";
 		
 		return str;
 	}
@@ -128,6 +112,11 @@ public class Customer extends Account
 		}
 		
 		return found;
+	}
+	
+	public boolean logout()
+	{
+		return false;
 	}
 	
 	public void buyTicket(char type)
