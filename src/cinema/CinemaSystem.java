@@ -97,35 +97,58 @@ public class CinemaSystem
 					
 					System.out.println("\n" + c[i].greeting());
 					
+					//Populate Movies Array
+					Scanner movieFile = new Scanner(new FileReader("movies.txt"));
+					
+					movieCount = 0;
+					while(movieFile.hasNext())
+					{
+						movies[movieCount] = new Movie(movieFile.next(), movieFile.nextInt(), movieFile.nextLine());
+						
+						movieCount++;
+					}
+					
 					System.out.println("\nShow Customer Details (1), Display Movies (2), Order Ticket (3), Logout (-1)");
 					System.out.print("Please choose an option: ");
-					choice = console.nextInt();
+					choice = console.nextInt();	
 					
 					while(choice != -1)
 					{
 						switch(choice)
 						{
 							case 1:
+								//Show customer details
+								
 								System.out.println(c[currentUser].toString());
 								break;
 							case 2:
-								Scanner movieFile = new Scanner(new FileReader("movies.txt"));
-								
-								movieCount = 0;
-								while(movieFile.hasNext())
-								{
-									movies[movieCount] = new Movie(movieFile.next(), movieFile.nextInt(), movieFile.nextLine());
-									
-									movieCount++;
-								}
+								//Display movies on show
 								
 								for(i = 0; i < movieCount; i++)
 								{
 									movies[i].display();
-									System.out.println(movies[i].getClass());
+									//System.out.println(movies[i].getClass());
 								}
 								break;
 							case 3:
+								//Order a ticket
+								int movieChoice;
+								
+								for(i = 0; i < movieCount; i++)
+								{
+									//change getTitle() add remaintickets?
+									System.out.println((i + 1) + " " + movies[i].getTitle());
+								}
+								
+								System.out.print("\n\tPlease choose the corresponding number to your movie choice: ");
+								movieChoice = console.nextInt();
+								
+								System.out.print("\n\tPlease choose Adult(0), Student(1) or Child(2): ");
+								TicketType ticketType = TicketType.values()[console.nextInt()];
+								
+								Ticket ticket = BookingAgent.purchaseTicket(c[currentUser], movies[movieChoice - 1], ticketType);
+								
+								System.out.println("\nTicket Purhcased for:\n" + ticket.toString());
 								break;
 							default:
 						}
@@ -137,16 +160,7 @@ public class CinemaSystem
 					
 					found = c[currentUser].logout();
 					System.out.println("User has been logged out. Goodbye!");
-					/*
-					 * 
-					 * 
-					 * Code goes here
-					 * Add Logout method
-					 * Maybe change some member vars.
-					 * Get rid of address and contact number. Add email?
-					 * 
-					 * 
-					 */
+					
 				}
 				else
 				{

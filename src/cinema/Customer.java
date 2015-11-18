@@ -14,8 +14,7 @@ public class Customer extends Account
 		setFirstName();
 		setLastName();
 		setAge();
-		setEmail();
-		
+		setEmail();	
 	}
 
 	public Customer(String username, String password) 
@@ -119,9 +118,5 @@ public class Customer extends Account
 		return false;
 	}
 	
-	public void buyTicket(char type)
-	{
-		//DO SOMETHING
-	}
 	
 } //end Customer

@@ -1,12 +1,28 @@
 package cinema;
 
-public abstract class Ticket 
+public class Ticket 
 {
-	String movie;
-	String description;
-	int time;
-	String date;
+	Movie movie;
+	Customer customer;
+	TicketType ticketType;
+	double price;
 	
-	public abstract Ticket createTicket();
+	public Ticket(Customer customer, Movie movie, TicketType ticketType, double price)
+	{
+		this.customer = customer;
+		this.movie = movie;
+		this.ticketType = ticketType;
+		this.price = price;
+	}
+	
+	@Override
+	public String toString()
+	{
+		String str;
+		
+		str = movie.title + "\nPrice: " + price;
+		
+		return str;
+	}
 	
 }

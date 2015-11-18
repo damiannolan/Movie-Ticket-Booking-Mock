@@ -5,6 +5,8 @@ public class Movie
 	String title;
 	String genre;
 	int runtime;
+	//showtime?
+	//ticketsremaining?
 	
 	public Movie (String genre, int runtime, String title)
 	{
@@ -47,10 +49,13 @@ public class Movie
 	{
 		System.out.println("\nTitle: " + title);
 		System.out.println("Genre: " + genre);
-		System.out.println("Runtime: " + runtime + " mins");
-		
+		System.out.println("Runtime: " + runtime + " mins");	
 	}
 	
-	
+	public String list()
+	{
+		//System.out.println(title);
+		return title;
+	}
 	
 }
