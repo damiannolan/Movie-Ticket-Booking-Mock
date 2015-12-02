@@ -2,9 +2,16 @@ package cinema;
 
 public class BookingAgent 
 {
-	public static double ADULTPRICE = 10.00;
-	public static double STUDENTPRICE = 7.00;
-	public static double CHILDTICKET = 5.00;
+	public static double ADULTPRICE;
+	public static double STUDENTPRICE;
+	public static double CHILDPRICE;
+	
+	public static void initTicketPrices()
+	{
+		ADULTPRICE = 10.00;
+		STUDENTPRICE = 7.00;
+		CHILDPRICE = 5.00;
+	}
 	
 	public static Ticket purchaseTicket(Customer customer, Movie movie, TicketType ticketType)
 	{
@@ -19,13 +26,20 @@ public class BookingAgent
 				ticketPrice = BookingAgent.STUDENTPRICE;
 				break;
 			case CHILD:
-				ticketPrice = BookingAgent.CHILDTICKET;
+				ticketPrice = BookingAgent.CHILDPRICE;
 				break;
 			default:
 				ticketPrice = BookingAgent.ADULTPRICE;
 		}
 		
 		return new Ticket(customer, movie, ticketType, ticketPrice); 
+	}
+	
+	public static void showTicketPrices()
+	{
+		System.out.println("Adult: " + ADULTPRICE);
+		System.out.println("Student: " + STUDENTPRICE);
+		System.out.println("Child: " + CHILDPRICE);
 	}
 }
 /*

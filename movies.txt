@@ -1,3 +1,8 @@
-Action/Fantasy 135 Star Wars: The Force Awakens
+Fantasy 135 Star Wars: The Force Awakens
 Action 148 007: Spectre
-Horror/Thriller 88 Paranormal Activity: The Ghost Dimension
+Horror 88 Paranormal Activity: The Ghost Dimension
+
+Comedy 117 The Big Lebowski
+Action 100 DeadPool
+Thriller 131 Hannibal
+Thriller 118 The Silence of the Lambs

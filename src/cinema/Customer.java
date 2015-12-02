@@ -6,7 +6,6 @@ public class Customer extends Account
 	String lastName;
 	int age;
 	String email;
-	double balance;
 	
 	public Customer()
 	{
@@ -95,6 +94,7 @@ public class Customer extends Account
 	}
 	
 	// login()
+	@Override
 	public boolean login(String username, String password)
 	{
 		boolean found;
@@ -113,10 +113,10 @@ public class Customer extends Account
 		return found;
 	}
 	
+	@Override
 	public boolean logout()
 	{
 		return false;
 	}
-	
 	
 } //end Customer

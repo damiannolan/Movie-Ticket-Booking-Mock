@@ -1,5 +1,9 @@
 package cinema;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Ticket 
 {
 	Movie movie;
@@ -23,6 +27,18 @@ public class Ticket
 		str = movie.title + "\nPrice: " + price;
 		
 		return str;
+	}
+	
+	public void printToFile() throws IOException
+	{
+		PrintWriter ticketsFile = new PrintWriter(new FileWriter("tickets.txt", true));
+		
+		ticketsFile.println("=====Ticket=====");
+		ticketsFile.println(movie.toString());
+		ticketsFile.println(ticketType.name() + " €" + price);
+		ticketsFile.println("=====Ticket=====");
+		
+		ticketsFile.close();
 	}
 	
 }

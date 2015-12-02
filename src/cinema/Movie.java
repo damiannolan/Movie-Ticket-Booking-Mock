@@ -58,4 +58,10 @@ public class Movie
 		return title;
 	}
 	
+	@Override
+	public String toString()
+	{	
+		return String.format("%s%n%s%n%d mins", genre, title, runtime);
+	}
+	
 }

@@ -1,4 +1,5 @@
 damian123	password	Damian	Nolan	21	damiannolan@gmail.com
-frank123	frankpass	frank	nolan	23	franknolangalway@gmail.com	
-marette	n	marette	nolan	25	23235235	marettenolan@gmail.com	
-nicola123	nikkipass	Nicola	Nolan	33	nikkinolan@gmail.com	
+Patrick123	patpass		Patrick	nolan	36	patnolanireland@gmail.com	
+marette		marette		Marette Nolan	25	marettenolan@gmail.com	
+user123		nopass		first	last	18	anotheruser@gmail.com	
+anotheruser	random	another	user	14	anotheruser@hotmail.com	

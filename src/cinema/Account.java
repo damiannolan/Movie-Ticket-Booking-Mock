@@ -21,6 +21,12 @@ public abstract class Account
 		this.password = password;
 	}
 	
+	//abstract login method
+	public abstract boolean login(String username, String password);
+	
+	//abstract logout method
+	public abstract boolean logout();
+	
 	public String getUsername ()
 	{
 		System.out.print("Enter Username: ");
